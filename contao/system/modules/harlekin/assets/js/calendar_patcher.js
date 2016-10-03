@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    var currentDate = '';
-    $('.mod_eventlist').each(function(index) {
-        $(this).find('.event').each(function(index) {
+    $('.mod_eventlist').each(function() {
+        var currentDate = '';
+        $(this).find('.event').each(function() {
             var dateElement = $(this).find('time');
             var dateText = dateElement.find('.time_day').text();
             if (dateText != currentDate) {
