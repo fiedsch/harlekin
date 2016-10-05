@@ -16,6 +16,11 @@ ClassLoader::addClasses(array
 (
 	// Elements
 	'ContentTeamMemberList' => 'system/modules/harlekin/elements/ContentTeamMemberList.php',
+
+    // Models
+    'TeamMemberModel'       => 'system/modules/harlekin/models/TeamMemberModel.php',
+    'TeamModel'             => 'system/modules/harlekin/models/TeamModel.php',
+
 ));
 
 TemplateLoader::addFiles(array
