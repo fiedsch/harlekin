@@ -1,0 +1,38 @@
+<?php // abgeleitet von event_list.html5 -- mit weniger (hier irreleventen) Informationen ?>
+<?php // Wochentag einblenden
+  $dt = \DateTime::createFromFormat(\Config::get('dateFormat'), $this->date);
+  $this->weekday = $GLOBALS['TL_LANG']['DAYS_SHORT'][$dt->format("w")];
+  $hideBygone = true;
+  $isBygone = strpos($this->classList, 'bygone')>0;
+  if (null !== \Input::get('day')) { // hideBygone nicht in Tagesansichten!
+  	$hideBygone = false;
+  }
+  $isBygoneMonth = $dt->format("Ym") < (new DateTime())->format("Ym");
+  if ($isBygoneMonth) { // hideBygone nicht in abgelaufenen Mnaten, die damit immer leer wären
+  	$hideBygone = false;
+  }
+?>
+<?php if (!($isBygone && $hideBygone)): ?>
+<div class="event layout_list<?= $this->classList ?>  date_<?= $this->date ?>">
+  <div class="event_title cal_<?= $this->calendar->id ?>">
+  <span class="time"><time datetime="<?= $this->datetime ?>">
+    <span class="time_day"><?= $this->weekday ?> <?= $this->date ?></span>
+    <span class="time_hours"><?php if ($this->time): ?><?= $this->time ?><?php endif; ?></span>
+  </time>
+  </span>	
+  <?php if ($this->hasTeaser || $this->hasDetails): ?>
+  	<!--<?= $this->calendar->title ?>:--> <a href="<?= $this->href ?>" title="<?= $this->title ?> (<?php if ($this->day) echo $this->day . ', '; ?><?= $this->date ?><?php if ($this->time) echo ', ' . $this->time; ?>)"<?= $this->target ?>><?= $this->link ?></a><?php if ($this->location):?>, <?= $this->location ?><?php endif; ?>
+  	xxx
+  <?php else: ?>
+  	<!--<?= $this->calendar->title ?>:--> <?= $this->link ?>
+  	<?php if ($this->score_home != '' && $this->score_away != ''): ?>
+  	<b><?= $this->score_home ?>:<?= $this->score_away ?></b>
+  	<?php endif; ?>
+  	
+  	<?php if ($this->location):?>, <?= $this->location ?>
+  	<?php endif; ?>
+  <?php endif; ?>
+  	</div>
+</div>
+<?php endif; ?>
+<?php // $this->showTemplateVars(); ?>

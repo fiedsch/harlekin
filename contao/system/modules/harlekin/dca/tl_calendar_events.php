@@ -30,7 +30,7 @@ $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['default'] =
  */
 
 $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['default'] =
-    str_replace('{date_legend}', '{harlekin_legend},im_harlekin,location;{date_legend}', $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['default']);
+    str_replace('{date_legend}', '{harlekin_legend},im_harlekin,location,score_home,score_away;{date_legend}', $GLOBALS['TL_DCA']['tl_calendar_events']['palettes']['default']);
 
 $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['im_harlekin'] = array
 (
@@ -45,7 +45,25 @@ $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['im_harlekin'] = array
     'sql'                     => "varchar(32) NOT NULL default ''",
 );
 
+$GLOBALS['TL_DCA']['tl_calendar_events']['fields']['score_home'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_calendar_events']['score_home'],
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'exclude'                 => true,
+    'eval'                    => array('tl_class'=>'w50', 'mandatory'=>false,'rgxp'=>'digit'),
+    'sql'                     => "varchar(3) NOT NULL default ''",
+);
 
+$GLOBALS['TL_DCA']['tl_calendar_events']['fields']['score_away'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_calendar_events']['score_away'],
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'exclude'                 => true,
+    'eval'                    => array('tl_class'=>'w50', 'mandatory'=>false,'rgxp'=>'digit'),
+    'sql'                     => "varchar(3) NOT NULL default ''",
+);
 /*
  * Search und Filter Standards verändern
  */

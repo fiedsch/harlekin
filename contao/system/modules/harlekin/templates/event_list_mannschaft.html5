@@ -1,0 +1,25 @@
+<?php // abgeleitet von event_list.html5 -- mit weniger (hier irreleventen) Informationen ?>
+<?php // Wochentag einblenden
+  $dt = \DateTime::createFromFormat(\Config::get('dateFormat'), $this->date);
+  $this->weekday = $GLOBALS['TL_LANG']['DAYS_SHORT'][$dt->format("w")];
+  $heimspiel = $this->im_harlekin === 'home';
+  $icon = $heimspiel ? '<i class="fa fa-university"></i>' : '<i class="fa fa-car"></i>';
+?>
+<div class="event layout_list<?= $this->classList ?>  date_<?= $this->date ?> mannschaft">
+  <span class="home_away_icon"><?= $icon ?></span>
+  <div class="event_title cal_<?= $this->calendar->id ?>">
+  <span class="time"><time datetime="<?= $this->datetime ?>">
+    <span class="time_day"><?= $this->weekday ?> <?= $this->date ?></span>
+    <span class="time_hours"><?php if ($this->time): ?><?= $this->time ?><?php endif; ?></span>
+  </time>
+  </span>
+  <?php if ($this->hasTeaser || $this->hasDetails): ?>
+  	<!-- <?= $this->calendar->title ?>: --> 
+  	<a href="<?= $this->href ?>" title="<?= $this->title ?> (<?php if ($this->day) echo $this->day . ', '; ?><?= $this->date ?><?php if ($this->time) echo ', ' . $this->time; ?>)"<?= $this->target ?>><?= $this->link ?></a><?php if ($this->location):?>, <?= $this->location ?><?php endif; ?>
+  <?php else: ?>
+  	<!-- <?= $this->calendar->title ?>: -->
+  	<?= $this->link ?><?php if ($this->location):?>, <?= $this->location ?><?php endif; ?>
+  <?php endif; ?>
+  	</div>
+</div>
+<?php // $this->showTemplateVars(); ?>
