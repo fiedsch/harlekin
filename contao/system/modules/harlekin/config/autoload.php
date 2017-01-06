@@ -19,10 +19,8 @@ ClassLoader::addClasses(array
 
     // Classes
     'Harlekin\\EventHelper' => 'system/modules/harlekin/classes/EventHelper.php',
-    'Harlekin\\AjaxHelper'  => 'system/modules/harlekin/classes/AjaxHelper.php',
 
     // Models
-    'TeamMemberModel'       => 'system/modules/harlekin/models/TeamMemberModel.php',
     'TeamModel'             => 'system/modules/harlekin/models/TeamModel.php',
 
 ));
