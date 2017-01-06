@@ -2,7 +2,6 @@
 $GLOBALS['TL_DCA']['tl_team'] = [
   'config' => [
       'dataContainer'               => 'Table',
-      'ctable'                      => ['tl_team_member'],
       'enableVersioning'            => true,
       'sql' => [
           'keys' => [
@@ -33,15 +32,10 @@ $GLOBALS['TL_DCA']['tl_team'] = [
       'operations' => [
           'edit' => [
               'label'               => &$GLOBALS['TL_LANG']['tl_team']['edit'],
-              'href'                => 'table=tl_team_member',
+              'href'                => 'act=edit',
               'icon'                => 'edit.gif'
           ],
 
-          'editheader' => [
-              'label'               => &$GLOBALS['TL_LANG']['tl_team']['editheader'],
-              'href'                => 'act=edit',
-              'icon'                => 'header.gif',
-          ],
           'copy' => [
               'label'               => &$GLOBALS['TL_LANG']['tl_team']['copy'],
               'href'                => 'act=copy',
