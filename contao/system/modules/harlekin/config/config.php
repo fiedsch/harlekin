@@ -9,6 +9,3 @@ $GLOBALS['BE_MOD']['accounts']['team']
     ];
 
 $GLOBALS['TL_HOOKS']['getAllEvents'][] = array('Harlekin\\EventHelper', 'reduceToHomeEvents');
-
-//$GLOBALS['TL_HOOKS']['simpleAjaxFrontend'][] = array('Harlekin\\AjaxHelper', 'handleAjaxRequest');
-$GLOBALS['TL_HOOKS']['simpleAjax'][] = array('Harlekin\\AjaxHelper', 'handleAjaxRequest');
