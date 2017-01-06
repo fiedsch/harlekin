@@ -41,21 +41,17 @@ class ContentTeamMemberList extends \ContentElement
     {
 
         try {
-
-            $memberids = deserialize($this->team, true);
-
             $team = [];
-
-            foreach ($memberids as $memberid) {
-                $team[] = \MemberModel::findById($memberid);
+            // brute force: scan all members :-(
+            $members = \MemberModel::findAll();
+            foreach ($members as $member) {
+                if (in_array($this->team, deserialize($member->teams, true))) {
+                    $team[] = $member;
+                }
             }
-
             $this->Template->team = $team;
-
         } catch (\Exception $e) {
-
             // Eintrag in Contao Log ?
-
         }
 
     }

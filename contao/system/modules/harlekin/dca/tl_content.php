@@ -7,12 +7,10 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['team'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['team'],
     'exclude'                 => true,
-    'inputType'               => 'checkboxWizard',
-    //'inputType'               => 'select',
-    'foreignKey'              => 'tl_member.CONCAT(lastname,", ",firstname)',
-    'eval'                    => array('tl_class'=>'long','multiple'=>true),
-    //'eval'                    => array('tl_class'=>'long','chosen'=>true, 'multiple'=>true),
-    'sql'                     => "blob NULL",
+    'inputType'               => 'select',
+    'foreignKey'              => 'tl_team.name',
+    'eval'                    => array('tl_class'=>'long','chosen'=>true, 'multiple'=>false),
+    'sql'                     => "int(10) NOT NULL default '0'",
 );
 
 
