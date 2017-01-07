@@ -1,13 +1,10 @@
 <?php
 
-$GLOBALS['TL_LANG']['tl_member']['harlekin_legend'] = 'DC Harlekin';
-
-$GLOBALS['TL_LANG']['tl_member']['nickname']  = [
+$GLOBALS['TL_LANG']['tl_member']['nickname'] = [
     'Nickname',
-    'Nickname des Mitglieds'
+    'Nickname des Mitglieds',
 ];
-
-$GLOBALS['TL_LANG']['tl_member']['teams'] = [
-    'Mannschaften',
-    'Hier können Sie das Mitglied einer oder mehreren Mannschaften zuweisen.'
+$GLOBALS['TL_LANG']['tl_member']['monthOfBirth'] = [
+    'Geburtsmonat',
+    'Virtuelles Feld, das automatisch via save_callback gesetzt wird. Verwendung in der Mitgliederliste.',
 ];

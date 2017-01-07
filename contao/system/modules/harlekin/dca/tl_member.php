@@ -18,18 +18,17 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['nickname'] = [
     'sql'       => "varchar(255) NOT NULL default ''",
 ];
 
-$GLOBALS['TL_DCA']['tl_member']['fields']['teams'] = [
-    'label'      => &$GLOBALS['TL_LANG']['tl_member']['teams'],
-    'inputType'  => 'checkboxWizard',
-    'exclude'    => true,
-    'search'     => true,
-    'filter'     => true,
-    'sorting'    => true,
-    'foreignKey' => 'tl_team.name',
-    'eval'       => ['multiple' => true],
-    'sql'        => "blob NULL",
+$GLOBALS['TL_DCA']['tl_member']['fields']['monthOfBirth'] = [
+    'label'     => &$GLOBALS['TL_LANG']['tl_member']['monthOfBirth'],
+    'sorting'   => true,
+    'sql'       => "varchar(32) NOT NULL default ''",
 ];
 
+$GLOBALS['TL_DCA']['tl_member']['fields']['dateOfBirth']['save_callback'][] = ['\\Harlekin\\DcaHelper','generateMonthOfBirth'];
+// remove dateAdded from default column list as it might be confusing next to 'monthOfBirth'
+$GLOBALS['TL_DCA']['tl_member']['list']['label']['fields'] 
+  = array_filter($GLOBALS['TL_DCA']['tl_member']['list']['label']['fields'],
+    function($element) { return $element !== 'dateAdded';});
 
 /* modify palette (1) remove unused fields */
 /*
@@ -52,17 +51,12 @@ foreach (['company', 'state', 'country', 'fax', 'website', 'language', 'assignDi
 
 }
 
+/* modify palette (2) add new fields */
+
 $GLOBALS['TL_DCA']['tl_member']['palettes']['default']
     = str_replace("lastname", 'lastname,nickname', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
 
-$GLOBALS['TL_DCA']['tl_member']['palettes']['default']
-    = str_replace("{contact_legend}", '{harlekin_legend},teams;{contact_legend}', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
 /* add css attribues so the fields align nicer */
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['postal']['eval']['tl_class'] .= ' clr';
 
-/*
-str_replace('{date_legend}', '{harlekin_legend},;{date_legend}',
-    $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
-*/
-/* modify palette (2) add new fields */

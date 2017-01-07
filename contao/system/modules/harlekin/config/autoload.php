@@ -12,20 +12,9 @@
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
-	// Elements
-	'ContentTeamMemberList' => 'system/modules/harlekin/elements/ContentTeamMemberList.php',
-
+ClassLoader::addClasses([
     // Classes
     'Harlekin\\EventHelper' => 'system/modules/harlekin/classes/EventHelper.php',
+    'Harlekin\\DcaHelper'   => 'system/modules/harlekin/classes/DcaHelper.php',
 
-    // Models
-    'TeamModel'             => 'system/modules/harlekin/models/TeamModel.php',
-
-));
-
-TemplateLoader::addFiles(array
-(
-    'ce_teammemberlist' => 'system/modules/harlekin/templates',
-));
+]);
