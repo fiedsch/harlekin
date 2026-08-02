@@ -39,3 +39,7 @@ PaletteManipulator::create()
 //     https://docs.contao.org/5.x/dev/reference/dca/callbacks/#config-onsubmit
 //     "die benötigten Felder geeignet setzen".
 //     Bsp.: published = 1
+
+// TODO: im oncreate callback (?) z.B. addTime ankreuzen
+//       und (oben) dieses Feld verstecken -- wir wollen immer eine Zeit hinzufügen
+//       https://docs.contao.org/5.x/dev/reference/dca/callbacks/#config-oncreate
