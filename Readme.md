@@ -1,6 +1,6 @@
 # Readme
 
-Contao "extensions" and modifications for the DC Harlekin website (www.dc-harlekin.de)
+Contao modifications for the DC Harlekin website (www.dc-harlekin.de)
 
 Mainly kept here as yet another backup.
 
