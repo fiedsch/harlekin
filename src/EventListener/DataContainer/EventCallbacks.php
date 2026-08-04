@@ -41,12 +41,17 @@ UPDATE tl_calendar_events
 SQL;
 
        $this->connection->executeQuery($query, [true,  $insertId]);
+
     }
 
 //    #[AsCallback(table: 'tl_calendar_events', target: 'config.onload')]
 //    public function onLoad(DataContainer $dc)
 //    {
-//        /* TODO: if time is not set, set it to a default time (e.g. 20:00) */
+//        $currentRecord = $dc->getCurrentRecord();
+//
+//        if (empty($currentRecord['startTime'])) {
+//            // TODO: set to a default time (instead of "now)
+//        }
 //    }
 
 }
