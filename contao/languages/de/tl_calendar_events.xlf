@@ -1,0 +1,22 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_calendar_events.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_calendar_events.spielort_values.home">
+        <source>home</source>
+        <target>Im Harlekin</target>
+      </trans-unit>
+      <trans-unit id="tl_calendar_events.spielort_values.away">
+        <source>home</source>
+        <target>Irgendwo anders</target>
+      </trans-unit>
+      <trans-unit id="tl_calendar_events.spielort.0">
+        <source>spielort</source>
+        <target>(Spiel-)ort</target>
+      </trans-unit>
+      <trans-unit id="tl_calendar_events.spielort.1">
+        <source>spielort_beschreibung</source>
+        <target>Ort an dieses Event (Ligaspiel) stattfindet. Wird zum Filtern verwendet.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

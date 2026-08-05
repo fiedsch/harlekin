@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_module.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_module.cal_home_only.0">
+        <source>cal_home_only</source>
+        <target>Nur Events im Harlekin</target>
+      </trans-unit>
+      <trans-unit id="tl_module.cal_home_only.1">
+        <source>cal_home_only_beschreibung</source>
+        <target>Nur Events anzeigen, die im Harlekin stattfinden (Heimspiele).</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

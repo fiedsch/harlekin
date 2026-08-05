@@ -28,10 +28,16 @@ PaletteManipulator::create()
 	->removeField('published')
 	->removeField('start')
 	->removeField('stop')
+	->addField('spielort', 'startDate',PaletteManipulator::POSITION_AFTER, )
+	->removeField('startDate') // will be added again later at another position
+	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
+	->applyToPalette('default', 'tl_calendar_events')
+;
+PaletteManipulator::create()
+	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
 	->applyToPalette('default', 'tl_calendar_events')
 ;
 
-// TODO: Palette umsortieren: Datum vor Zeit
 
 // PaletteManipulator::create()
 // 	->removeField('endTime')
@@ -46,3 +52,14 @@ PaletteManipulator::create()
 // TODO: im oncreate callback (?) z.B. addTime ankreuzen
 //       und (oben) dieses Feld verstecken -- wir wollen immer eine Zeit hinzufügen
 //       https://docs.contao.org/5.x/dev/reference/dca/callbacks/#config-oncreate
+
+$GLOBALS['TL_DCA']['tl_calendar_events']['fields']['spielort'] = [
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options'                 => ['home','away'],
+    'reference'               => &$GLOBALS['TL_LANG']['tl_calendar_events']['spielort_values'],
+    'exclude'                 => true,
+    'filter'                  => true,
+    'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'includeBlankOption'=>false, 'default' => 'home'),
+    'sql'                     => "varchar(32) NOT NULL default ''",
+];
