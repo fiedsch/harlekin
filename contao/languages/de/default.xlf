@@ -6,7 +6,6 @@
         <source>There are no events on this day.</source>
         <target>Es gibt keinen Termin im &lt;a href="{{link_url::13}}">Kalender&lt;/a>.&lt;br>Bitte den Wirt fragen &lt;a href="tel:+498965113113">089/65 113 113&lt;/a>, ob die Anlagen frei sind.</target>
       </trans-unit>
-      
     </body>
   </file>
 </xliff>
