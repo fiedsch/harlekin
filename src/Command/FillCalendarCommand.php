@@ -209,21 +209,21 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
 
                 $duplicate = CalendarEventsModel::findByAlias($aliasCandidate);
                 if ($duplicate) {
-                    $output->writeln(sprintf('<error>Event %s gibt es bereits</error>', $aliasCandidate));
-                    // $duplicate löschen und mit potenziell neuen Daten neu anlegen
-                    // Beachte: es könnte Ligen geben, bei denen zwei Mannschaften pro Saison mehrmals (am gleichen Spielort) gegeneinander spielen
-                    // TODO dafür in der Ligaverwaltung: "spiel_tag" mit in den JSON Response aufnehmen und dann hier im alias berücksichtigen
-                    if (!$this->dryRun) {
-                        $duplicate->delete();
-                    }
-                }
-
-                $model->alias = $aliasCandidate;
-                if (!$this->dryRun) {
-                    $model->save();
-                    $output->writeln(sprintf('<info>gespeichert %s</info>', $model->title));
+                    $output->writeln(sprintf('<error>Event %s gibt es bereits. Bitte manuell prüfen und ggf. korrigieren</error>', $aliasCandidate));
+                    // // $duplicate löschen und mit potenziell neuen Daten neu anlegen
+                    // // Beachte: es könnte Ligen geben, bei denen zwei Mannschaften pro Saison mehrmals (am gleichen Spielort) gegeneinander spielen
+                    // // TODO dafür in der Ligaverwaltung: "spiel_tag" mit in den JSON Response aufnehmen und dann hier im alias berücksichtigen
+                    // if (!$this->dryRun) {
+                    //     $duplicate->delete();
+                    // }
                 } else {
-                    $output->writeln(sprintf('<info>Daten: %s</info>', json_encode($model->row())));
+                    $model->alias = $aliasCandidate;
+                    if (!$this->dryRun) {
+                        $model->save();
+                        $output->writeln(sprintf('<info>gespeichert %s</info>', $model->title));
+                    } else {
+                        $output->writeln(sprintf('<info>Daten: %s</info>', json_encode($model->row())));
+                    }
                 }
             }
 
