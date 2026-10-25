@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\EventListener\DataContainer;
 
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\DataContainer;
 use Doctrine\DBAL\Connection;
@@ -54,4 +55,15 @@ SQL;
 //        }
 //    }
 
+    public function handleFieldsDisplay(DataContainer $dc): void
+    {
+        // Nur bei Kalendern für Ligaspiele
+        if (!in_array($dc->currentPid, [4,7,20,6,5])) { return; }
+        PaletteManipulator::create()
+            ->removeField('teaser')
+            ->applyToPalette('default', 'tl_calendar_events')
+            ;
+    }
+
 }
+

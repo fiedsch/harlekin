@@ -16,7 +16,7 @@ PaletteManipulator::create()
 	->removeField('serpPreview')
 	->removeField('location')
 	->removeField('address')
-//	->removeField('teaser')
+//	->removeField('teaser') // siehe App\EventListener\DataContainer\EventCallbacks, wo Kalender IDs hart kodiert sind :-(
 	->removeField('addEnclosure')
 	->removeField('enclosure')
 //	->removeField('addImage')
@@ -33,6 +33,7 @@ PaletteManipulator::create()
 	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
 	->applyToPalette('default', 'tl_calendar_events')
 ;
+
 PaletteManipulator::create()
 	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
 	->applyToPalette('default', 'tl_calendar_events')
@@ -62,4 +63,8 @@ $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['spielort'] = [
     'filter'                  => true,
     'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'includeBlankOption'=>false, 'default' => 'home'),
     'sql'                     => "varchar(32) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_calendar_events']['config']['onload_callback'] = [
+    ['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsDisplay']
 ];
