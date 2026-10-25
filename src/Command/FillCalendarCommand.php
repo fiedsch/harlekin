@@ -59,7 +59,7 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
         $this->dryRun = $input->getOption('dry-run');
         $this->verband = $input->getArgument('verband');
 
-        $output->writeln('dry-run: '.$this->dryRun);
+        $output->writeln('dry-run: '.($this->dryRun ? 'ja' : 'nein'));
         $output->writeln('verband: '.$this->verband);
 
         $this->httpClient = HttpClient::create(
