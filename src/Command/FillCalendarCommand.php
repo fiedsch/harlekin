@@ -81,11 +81,16 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
         return Command::SUCCESS;
     }
 
+    /**
+     * @throws Exception
+     */
     protected function getUrlForVerband(): string
     {
-        return $this->verband == "SDM"
-                    ? 'https://steeldart-muenchen.de'
-                    : 'https://www.edart-bayern.de';
+        return match ($this->verband) {
+            "SDM" => 'https://steeldart-muenchen.de',
+            "BeDV" => 'https://www.edart-bayern.de',
+            default => throw new Exception("Unbekannter Verband '{$this->verband}'"),
+        };
     }
 
     /**
