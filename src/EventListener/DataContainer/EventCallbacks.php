@@ -61,6 +61,9 @@ SQL;
         if (!in_array($dc->currentPid, [4,7,20,6,5])) { return; }
         PaletteManipulator::create()
             ->removeField('teaser')
+            ->removeField('addImage')
+            ->removeField('recurring')
+            ->removeField('noComments')
             ->applyToPalette('default', 'tl_calendar_events')
             ;
     }
