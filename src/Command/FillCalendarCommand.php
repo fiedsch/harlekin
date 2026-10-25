@@ -130,34 +130,35 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
             ],
 
             'BeDV' => [ /* calendar-ID 4 === 'BEDV Ligaspiele' */
-                55 => [ // "C1-Liga 2019/2020"
-                    307 => 4, // Harlekin Hurricans
-                    306 => 4, // Monster AG
+                238 => [ // Bezirksliga 2026/27
+                  1183  => 4,
                 ],
-                56 => [ // "C2-Liga 2019/2020"
-                    309 => 4, // Black Dark Dragon
-                ],
-                58 => [ // "C3-Liga 2019/2020"
-                    308 => 4, // Fun Gang
-                ],
-                54 => [ // B1-Liga 2019/2020
-                    305 => 4, // Thekenwächter
-                ],
-                57 => [ // B2-Liga 2019/2020
-                    304 => 4, // Heaven & Hell
-                ],
-                53 => [ // "A-Liga 2019/2020"
-                    301 => 4, // Dart Wars
-                    302 => 4, // Harlekin Cowboys
-                    303 => 4, // Harlekin Wild Darts
-                ],
-                52 => [ // "Bezirksliga 2019/2020"
-                    // keine Mannschaften des DC-Harlekin
-                ],
-                51 => [ // "Oberliga 2019/2020"
-                    299 => 4, // Ghost of Aliens
-                    300 => 4, // The Boys are back in Town
-                ],
+                // 236 => [ // "A1 2026/2027"
+                //     1127 => 4,
+                //     1181 => 4,
+                // ],
+                // // 232 => [ // "B1 2026/2027"
+                // // ],
+                // // 234 => [ // "B2 2026/2027"
+                // // ],
+                // 225 => [ // "C1 2026/2027"
+                //     1188 => 4,
+                //     1192 => 4,
+                // ],
+                // 229 => [ // "C2 2026/2027"
+                //     1200 => 4,
+                //     1191 => 4,
+                // ],
+                // 230 => [ // "C3 2026/2027"
+                //     1146 => 4,
+                //     1169 => 4,
+                // ],
+//
+                // 230 => [ // "MeD 2026/2027"
+                //     1230 => 20,
+                //     1234 => 20,
+                //     1222 => 20,
+                // ],
 
             ]
         ];
