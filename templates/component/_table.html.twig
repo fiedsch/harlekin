@@ -1,0 +1,9 @@
+{% use "@Contao/component/_table.html.twig" %}
+
+{% block table %}
+        {% set table_attributes = attrs(table_attributes|default)
+         .addClass("table")
+        %}
+        {{ parent() }}
+{% endblock %}        
+

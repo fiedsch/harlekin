@@ -1,0 +1,39 @@
+{% extends "@Contao/content_element/mannschaftsliste.html.twig" %}
+
+{% block content %}
+
+  {% for verbandId, ligen in mannschaftsliste  %}
+      <h2 class="mt-5 mb-4">{{ verbaende[verbandId].name }}</h2>
+
+    {% if verbaende[verbandId].logo is not empty %}
+          {# TODO: geeignetes "include" für die <figure> nutzen #}
+          <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
+              <a href="{{ verbaende[verbandId].logo }}" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
+                  <img src="{{ verbaende[verbandId]['logo'] }}" class="img-thumbnail" width="150px" alt="{{ verbaende[verbandId].name }}" itemprop="image">
+              </a>
+          </figure>
+    {% endif %}
+
+    {% for ligaId, mannschaften in ligen %}
+      <div class="row">
+
+          <div class="col-12 col-md-4">
+              <div class="logo-text">
+                  {{ ligenmapping[ligaId] }}
+              </div>
+          </div>
+
+          <div class="col-12 col-md-8">
+            <ul>
+              {% for name in mannschaften %}
+                  <li>{{ name|raw }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+    {% endfor %}
+
+  {% endfor %}
+
+{% endblock %}
