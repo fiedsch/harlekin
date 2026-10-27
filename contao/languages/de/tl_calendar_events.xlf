@@ -11,11 +11,17 @@
       </trans-unit>
       <trans-unit id="tl_calendar_events.spielort.0">
         <source>spielort</source>
-        <target>(Spiel-)ort</target>
+        <target>Ort des Events</target> <!-- see also EventCallbacks::handleFieldsLabels() -->
       </trans-unit>
       <trans-unit id="tl_calendar_events.spielort.1">
         <source>spielort_beschreibung</source>
-        <target>Ort an dieses Event (Ligaspiel) stattfindet. Wird zum Filtern verwendet.</target>
+        <target>Ort an dieses Event stattfindet. Wird zum Filtern verwendet.</target>
+      </trans-unit>
+      <trans-unit id="tl_calendar_events.startDate.0">
+        <target>Datum</target>
+      </trans-unit>
+      <trans-unit id="tl_calendar_events.startDate.1">
+        <target>Bitte geben Sie das Datum des Events ein.</target>
       </trans-unit>
     </body>
   </file>

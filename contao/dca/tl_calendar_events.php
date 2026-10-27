@@ -28,7 +28,7 @@ PaletteManipulator::create()
 	->removeField('published')
 	->removeField('start')
 	->removeField('stop')
-	->addField('spielort', 'startDate',PaletteManipulator::POSITION_AFTER, )
+	//->addField('spielort', 'startDate', PaletteManipulator::POSITION_AFTER)
 	->removeField('startDate') // will be added again later at another position
 	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
 	->applyToPalette('default', 'tl_calendar_events')
@@ -66,5 +66,6 @@ $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['spielort'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_calendar_events']['config']['onload_callback'] = [
-    ['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsDisplay']
+    ['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsDisplay'],
+	['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsLabels']
 ];
