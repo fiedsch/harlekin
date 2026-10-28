@@ -6,7 +6,7 @@
         <target>Im Harlekin</target>
       </trans-unit>
       <trans-unit id="tl_calendar_events.spielort_values.away">
-        <source>home</source>
+        <source>away</source>
         <target>Irgendwo anders</target>
       </trans-unit>
       <trans-unit id="tl_calendar_events.spielort.0">
