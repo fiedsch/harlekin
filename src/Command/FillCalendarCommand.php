@@ -200,6 +200,7 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
                 $model->addTime   = true;
                 $model->startTime = $event['startDateTime'];
                 $model->endTime   = $event['startDateTime'];
+                $model->spielort  = 'home'; // vs. 'away' !$event['is_home_game']
                 // SDM-Termine haben alle 00:00 Uhr als Zeitangabe (siehe Hook in der dortigen Konfiguration!)
                 $localTime = \DateTime::createFromTimestamp($event['startDateTime'])
                     ->setTimezone(new \DateTimeZone('Europe/Berlin'))
