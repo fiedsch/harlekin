@@ -1,0 +1,11 @@
+{# Für die Startseite "Heute im Harlekin" muss das Datum nicht mehrfach angegeben werden die Uhrzeit soll aber natürlich erhalten bleiben! #}
+<div class="event layout_upcoming{{ classUpcoming|default }}">
+
+    <!--<time datetime="{{ datetime }}" class="date">{{ date }}{% if time %} {{ time }}{% endif %}</time>-->
+    <time datetime="{{ datetime }}" class="date">{% if time %} {{ time }}{% endif %}</time>
+    <a href="{{ href|default }}" title="{{ title|default }} ({% if day|default %}{{ day }}, {% endif %}{{ date }} {% if time %} {{ time }}{% endif %})"{{ attrs(target) }}>{{ link|default }}</a>
+</div>
+
+{% if not hasReader %}
+    {% do add_schema_org(getSchemaOrgData.invoke()) %}
+{% endif %}
