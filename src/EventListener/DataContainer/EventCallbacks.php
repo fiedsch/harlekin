@@ -71,6 +71,7 @@ SQL;
         PaletteManipulator::create()
             ->removeField('startTime')
             ->removeField('endTime')
+            ->removeField('spielort')
             ->applyToSubPalette('addTime', 'tl_calendar_events')
         ;
 

@@ -28,9 +28,9 @@ PaletteManipulator::create()
 	->removeField('published')
 	->removeField('start')
 	->removeField('stop')
-	//->addField('spielort', 'startDate', PaletteManipulator::POSITION_AFTER)
 	->removeField('startDate') // will be added again later at another position
 	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
+    ->addField('spielort', 'startDate', PaletteManipulator::POSITION_AFTER)
 	->applyToPalette('default', 'tl_calendar_events')
 ;
 
