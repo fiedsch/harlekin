@@ -58,7 +58,14 @@ SQL;
     public function handleFieldsDisplay(DataContainer $dc): void
     {
         // Nur bei Kalendern für Ligaspiele
-        if (!in_array($dc->currentPid, [4,7,20,6,5])) { return; }
+        if (!in_array($dc->currentPid, [4,7,20,6,5])) {
+            PaletteManipulator::create()
+                ->addField('endDate', 'startDate', PaletteManipulator::POSITION_AFTER)
+                ->addField('spielort', 'title', PaletteManipulator::POSITION_AFTER) /* hier mit anderem Label @see self::handleFieldsLabels() */
+                ->applyToPalette('default', 'tl_calendar_events')
+            ;
+            return;
+        }
         PaletteManipulator::create()
             ->removeField('teaser')
             ->removeField('addImage')

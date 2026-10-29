@@ -16,7 +16,7 @@ PaletteManipulator::create()
 	->removeField('serpPreview')
 	->removeField('location')
 	->removeField('address')
-//	->removeField('teaser') // siehe App\EventListener\DataContainer\EventCallbacks, wo Kalender IDs hart kodiert sind :-(
+//	->removeField('teaser') // [*] siehe App\EventListener\DataContainer\EventCallbacks, wo Kalender IDs hart kodiert sind :-(
 	->removeField('addEnclosure')
 	->removeField('enclosure')
 //	->removeField('addImage')
@@ -30,7 +30,7 @@ PaletteManipulator::create()
 	->removeField('stop')
 	->removeField('startDate') // will be added again later at another position
 	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
-    ->addField('spielort', 'startDate', PaletteManipulator::POSITION_AFTER)
+    //->addField('spielort', 'startDate', PaletteManipulator::POSITION_AFTER) // [*]
 	->applyToPalette('default', 'tl_calendar_events')
 ;
 
