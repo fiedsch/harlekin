@@ -57,6 +57,11 @@ SQL;
 
     public function handleFieldsDisplay(DataContainer $dc): void
     {
+        // Für die App nicht relevante Felder nicht zum Filtern anbieten
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['featured']['filter']   = false;
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['recurring']['filter']   = false;
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['searchIndexer']['filter'] = false;
+        
         // Nur bei Kalendern für Ligaspiele
         if (!in_array($dc->currentPid, [4,7,20,6,5])) {
             PaletteManipulator::create()
@@ -96,6 +101,8 @@ SQL;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startDate']['eval']['tl_class'] = 'w33 clr';
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startTime']['eval']['tl_class'] = 'w33';
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['endTime']['eval']['tl_class']   = 'w33';
+
+
     }
 
     public function handleFieldsLabels(DataContainer $dc): void
