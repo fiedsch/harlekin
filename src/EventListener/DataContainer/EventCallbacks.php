@@ -61,7 +61,7 @@ SQL;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['featured']['filter']   = false;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['recurring']['filter']   = false;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['searchIndexer']['filter'] = false;
-        
+
         // Nur bei Kalendern für Ligaspiele
         if (!in_array($dc->currentPid, [4,7,20,6,5])) {
             PaletteManipulator::create()
