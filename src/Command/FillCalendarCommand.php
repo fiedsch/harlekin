@@ -194,7 +194,8 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
                 $model->tstamp    = time();
                 $model->pid       = $calendarId;
                 $model->author    = self::AUTHOR_ID;
-                $model->title     = sprintf("%s %s: %s", $this->verband, $event['liga'], $event['title']);
+                // $model->title     = sprintf("%s %s: %s", $this->verband, $event['liga'], $event['title']);
+                $model->title     = sprintf("%s: %s", $this->verband, $event['title']);
                 $model->location  = sprintf("%s, %s", $event['location']['name'], $event['location']['address']);
                 $model->startDate = $event['startDateTime'];
                 $model->addTime   = true;
