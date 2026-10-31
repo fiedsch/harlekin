@@ -76,6 +76,7 @@ SQL;
             ->removeField('addImage')
             ->removeField('recurring')
             ->removeField('noComments')
+            ->removeField('location')
             ->removeField('addTime') // does not only hide the field, but also the startTime and endTime fields (from the sub palette)
             ->applyToPalette('default', 'tl_calendar_events')
         ;

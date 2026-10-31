@@ -14,7 +14,7 @@ PaletteManipulator::create()
 	->removeField('robots')
 	->removeField('description')
 	->removeField('serpPreview')
-	->removeField('location')
+	//->removeField('location')
 	->removeField('address')
 //	->removeField('teaser') // [*] siehe App\EventListener\DataContainer\EventCallbacks, wo Kalender IDs hart kodiert sind :-(
 	->removeField('addEnclosure')
