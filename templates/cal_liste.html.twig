@@ -21,7 +21,9 @@
                       {{ day.timestamp|date(contao.date_format) }}</div>
                   {% for event in day.events %}
                     <div class="event cal_{{ event.parent }}{{ event.class }}">
-                      <a href="{{ event.href }}" title="{{ event.title }} ({% if event.day|default %}{{ event.day }}, {% endif %}{{ event.date }}{% if event.time|default %} {{ event.time }}{% endif %})"{{ event.target }}>{{ event.link }}</a>
+                      <a href="{{ event.href }}" title="{{ event.title }} ({% if event.day|default %}{{ event.day }}, {% endif %}{{ event.date }}{% if event.time|default %} {{ event.time }}{% endif %})"{{ event.target }}>
+                        {% if event.time|default %} {{ event.time }}{% endif %} {{ event.link }}
+                      </a>
                     </div>
                   {% endfor %}
                 </td>
