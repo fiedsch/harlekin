@@ -26,11 +26,12 @@ class EventCallbacks
     {
         $query = <<<SQL
 UPDATE tl_calendar_events
-    SET addTime = ?
+    SET addTime = ?,
+        published = ?
     WHERE id = ?
 SQL;
 
-       $this->connection->executeQuery($query, [true,  $insertId]);
+       $this->connection->executeQuery($query, [true, true, $insertId]);
 
     }
 
