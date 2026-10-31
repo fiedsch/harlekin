@@ -16,8 +16,8 @@ class GetAllEventsListener
         }
         $result = [];
         foreach ($events as $day => $daydata) {
-            foreach ($daydata as $tstamp => $tsampdata) {
-                $tmp = array_filter($tsampdata, function($event) {
+            foreach ($daydata as $tstamp => $data) {
+                $tmp = array_filter($data, function($event) {
                     return $event['spielort'] === 'home';
                 });
                 if (!empty($tmp)) {
