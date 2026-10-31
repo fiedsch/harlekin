@@ -16,17 +16,6 @@ class EventCallbacks
     {
     }
 
-    #[AsCallback(table: 'tl_calendar_events', target: 'config.onbeforesubmit')]
-    public function onBeforeSubmit(
-        array $record,
-        DataContainer $dc
-    )
-    {
-        $record['published'] = true;
-
-        return $record;
-    }
-
     #[AsCallback(table: 'tl_calendar_events', target: 'config.oncreate')]
     public function onCreate(
         string $table,
