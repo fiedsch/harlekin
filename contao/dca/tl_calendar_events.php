@@ -67,5 +67,8 @@ $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['spielort'] = [
 
 $GLOBALS['TL_DCA']['tl_calendar_events']['config']['onload_callback'] = [
     ['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsDisplay'],
-	['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsLabels']
+	['App\EventListener\DataContainer\EventCallbacks', 'handleFieldsLabels'],
+	['App\EventListener\DataContainer\EventCallbacks', 'handleCalendarOperations'],
 ];
+
+

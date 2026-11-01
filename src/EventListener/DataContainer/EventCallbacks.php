@@ -93,7 +93,6 @@ SQL;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startTime']['eval']['tl_class'] = 'w33';
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['endTime']['eval']['tl_class']   = 'w33';
 
-
     }
 
     public function handleFieldsLabels(DataContainer $dc): void
@@ -126,6 +125,15 @@ SQL;
             'Ort an dem dieses Ligaspiel stattfindet. Wird zum Filtern verwendet.'
         ];
 
+    }
+
+    public function handleCalendarOperations(DataContainer $dc): void
+    {
+        if (!in_array($dc->currentPid, $this->getSpielplanCalendarIds())) { return; }
+        // we don't allow (a teaser or) children, so remove the respective edit icon
+        // also: we dont care about featured events here
+        unset($GLOBALS['TL_DCA']['tl_calendar_events']['list']['operations']['children']);
+        unset($GLOBALS['TL_DCA']['tl_calendar_events']['list']['operations']['feature']);
     }
 
     protected function getSpielplanCalendarIds(): array
