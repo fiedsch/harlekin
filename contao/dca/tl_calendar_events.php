@@ -14,45 +14,22 @@ PaletteManipulator::create()
 	->removeField('robots')
 	->removeField('description')
 	->removeField('serpPreview')
-	//->removeField('location')
 	->removeField('address')
-//	->removeField('teaser') // [*] siehe App\EventListener\DataContainer\EventCallbacks, wo Kalender IDs hart kodiert sind :-(
+//	->removeField('teaser') // [*] siehe App\EventListener\DataContainer\EventCallbacks, wo dies abhängig von den Einstellungen des Kalenders gemacht wird
 	->removeField('addEnclosure')
 	->removeField('enclosure')
-//	->removeField('addImage')
-//	->removeField('recurring')
-
-	->removeField('cssClass')
+	// ->removeField('cssClass')
 	->removeField('searchIndexer')
-//	//->removeField('noComments') // siehe AddCommentsFieldsListener
+	//->removeField('noComments') // falls das comments bundle installiert ist: siehe den AddCommentsFieldsListener dort
 	->removeField('published')
 	->removeField('start')
 	->removeField('stop')
-	->removeField('startDate') // will be added again later at another position
-	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
+	->removeField('startDate') // [*] fügen wir später an anderer Position wieder ein
+	->removeField('endDate') // [*]
+	// ->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
     //->addField('spielort', 'startDate', PaletteManipulator::POSITION_AFTER) // [*]
 	->applyToPalette('default', 'tl_calendar_events')
 ;
-
-PaletteManipulator::create()
-	->addField('startDate', 'addTime', PaletteManipulator::POSITION_BEFORE)
-	->applyToPalette('default', 'tl_calendar_events')
-;
-
-
-// PaletteManipulator::create()
-// 	->removeField('endTime')
-// 	->applyToSubpalette('addTime', 'tl_calendar_events')
-// ;
-
-// TODO: im submit callback
-//     https://docs.contao.org/5.x/dev/reference/dca/callbacks/#config-onsubmit
-//     "die benötigten Felder geeignet setzen".
-//     Bsp.: published = 1
-
-// TODO: im oncreate callback (?) z.B. addTime ankreuzen
-//       und (oben) dieses Feld verstecken -- wir wollen immer eine Zeit hinzufügen
-//       https://docs.contao.org/5.x/dev/reference/dca/callbacks/#config-oncreate
 
 $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['spielort'] = [
     'exclude'                 => true,

@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="tl_calendar_events.spielort.1">
         <source>spielort_beschreibung</source>
-        <target>Ort an dieses Event stattfindet. Wird zum Filtern verwendet.</target>
+        <target>Ort an dieses Event stattfindet. Wird ggf. zum Filtern verwendet.</target>
       </trans-unit>
       <trans-unit id="tl_calendar_events.startDate.0">
         <target>Datum</target>

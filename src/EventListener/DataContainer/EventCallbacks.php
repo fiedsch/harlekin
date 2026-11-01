@@ -35,16 +35,6 @@ SQL;
 
     }
 
-//    #[AsCallback(table: 'tl_calendar_events', target: 'config.onload')]
-//    public function onLoad(DataContainer $dc)
-//    {
-//        $currentRecord = $dc->getCurrentRecord();
-//
-//        if (empty($currentRecord['startTime'])) {
-//            // TODO: set to a default time (instead of "now)
-//        }
-//    }
-
     public function handleFieldsDisplay(DataContainer $dc): void
     {
         // Für die App nicht relevante Felder nicht zum Filtern anbieten
@@ -52,9 +42,10 @@ SQL;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['recurring']['filter']   = false;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['searchIndexer']['filter'] = false;
 
-        // Nur bei Kalendern für Ligaspiele
+        // Nur bei allgemeinen Kalendern (keine Ligaspiele)
         if (!in_array($dc->currentPid, $this->getSpielplanCalendarIds())) {
             PaletteManipulator::create()
+                ->addField('startDate', 'date_legend', PaletteManipulator::POSITION_PREPEND)
                 ->addField('endDate', 'startDate', PaletteManipulator::POSITION_AFTER)
                 ->addField('spielort', 'title', PaletteManipulator::POSITION_AFTER) /* hier mit anderem Label @see self::handleFieldsLabels() */
                 ->applyToPalette('default', 'tl_calendar_events')
@@ -79,20 +70,28 @@ SQL;
         ;
 
         PaletteManipulator::create()
+            ->addLegend('date_legend', 'title_legend', PaletteManipulator::POSITION_AFTER)
+            //->addField('startDate', 'date_legend', PaletteManipulator::POSITION_PREPEND)
+            //->addField('endDate', 'startDate', PaletteManipulator::POSITION_AFTER)
+            //->addField('startTime', 'endDate', PaletteManipulator::POSITION_AFTER)
+            ->addField('startDate', 'date_legend', PaletteManipulator::POSITION_PREPEND)
             ->addField('startTime', 'startDate', PaletteManipulator::POSITION_AFTER)
+            ->addField('endDate', 'startTime', PaletteManipulator::POSITION_AFTER)
+            ->addField('endTime', 'endDate', PaletteManipulator::POSITION_AFTER)
             ->applyToPalette('default', 'tl_calendar_events')
         ;
 
         PaletteManipulator::create()
-            ->addField('endTime', 'startTime', PaletteManipulator::POSITION_AFTER)
             ->addField('spielort', 'endTime',PaletteManipulator::POSITION_AFTER)
             ->applyToPalette('default', 'tl_calendar_events')
         ;
 
-        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startDate']['eval']['tl_class'] = 'w33 clr';
-        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startTime']['eval']['tl_class'] = 'w33';
-        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['endTime']['eval']['tl_class']   = 'w33';
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startDate']['eval']['tl_class'] = 'w25';
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['endDate']['eval']['tl_class'] = 'w25';
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['startTime']['eval']['tl_class'] = 'w25';
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['endTime']['eval']['tl_class']   = 'w25';
 
+        $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['title']['eval']['tl_class']   = 'long';
     }
 
     public function handleFieldsLabels(DataContainer $dc): void
@@ -116,8 +115,8 @@ SQL;
         ];
 
         $GLOBALS['TL_LANG']['tl_calendar_events']['title'] = [
-            'Event Titel',
-            'Typischerweise im Format: Liga: Heimmannschaft : Gastmannschaft.'
+            'Spiel',
+            'Verband: Heimmannschaft vs. Gastmannschaft.'
         ];
 
         $GLOBALS['TL_LANG']['tl_calendar_events']['spielort'] = [
