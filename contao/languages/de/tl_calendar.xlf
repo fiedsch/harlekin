@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_calendar.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_calendar.spielplan.0">
+        <source>spielplan</source>
+        <target>Spielplan</target>
+      </trans-unit>
+      <trans-unit id="tl_calendar.spielplan.1">
+        <source>spieplan_beschreibung</source>
+        <target>Dieser Kalender enthält einen Spielplan (es werde nur ausgewählte Felder angezeigt).</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

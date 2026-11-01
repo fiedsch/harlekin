@@ -53,7 +53,7 @@ SQL;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['searchIndexer']['filter'] = false;
 
         // Nur bei Kalendern für Ligaspiele
-        if (!in_array($dc->currentPid, [4,7,20,6,5])) {
+        if (!in_array($dc->currentPid, $this->getSpielplanCalendarIds())) {
             PaletteManipulator::create()
                 ->addField('endDate', 'startDate', PaletteManipulator::POSITION_AFTER)
                 ->addField('spielort', 'title', PaletteManipulator::POSITION_AFTER) /* hier mit anderem Label @see self::handleFieldsLabels() */
@@ -99,7 +99,7 @@ SQL;
     public function handleFieldsLabels(DataContainer $dc): void
     {
         // Nur bei Kalendern für Ligaspiele
-        if (!in_array($dc->currentPid, [4,7,20,6,5])) { return; }
+        if (!in_array($dc->currentPid, $this->getSpielplanCalendarIds())) { return; }
 
         $GLOBALS['TL_LANG']['tl_calendar_events']['startDate'] = [
             'Datum',
@@ -126,6 +126,11 @@ SQL;
             'Ort an dem dieses Ligaspiel stattfindet. Wird zum Filtern verwendet.'
         ];
 
+    }
+
+    protected function getSpielplanCalendarIds(): array
+    {
+        return array_keys($this->connection->executeQuery('SELECT id FROM tl_calendar where spielplan=1')->fetchAllAssociativeIndexed());
     }
 
 }
