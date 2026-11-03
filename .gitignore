@@ -2,3 +2,5 @@
 **/*.sql.gz
 restore.sh
 **/.idea/
+
+sync.sh
