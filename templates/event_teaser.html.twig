@@ -6,8 +6,8 @@
 
 <div class="event layout_teaser{{ classList|default }}">
 
-    {# wegen Optik: Überschrift nicht verlinkt #}
-    {#
+     {# wegen Optik: Überschrift nicht verlinkt #}
+    {# 
     {% if hasDetails.invoke() %}
         <h2><a href="{{ href|default }}" title="{{ title }} ({% if day|default %}{{ day }}, {% endif %}{{ date }}{% if time %} {{ time }}{% endif %})"{{ attrs(target) }}>{{ link|default }}</a></h2>
     {% else %}
