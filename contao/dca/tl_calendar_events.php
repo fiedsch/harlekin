@@ -48,6 +48,7 @@ $GLOBALS['TL_DCA']['tl_calendar_events']['config']['onload_callback'] = [
 	['App\EventListener\DataContainer\EventCallbacks', 'handleCalendarOperations'],
 ];
 
+
 foreach (['published', 'addTime', 'startDate', 'endDate', 'startTime', 'endTime'] as $field) {
-	$GLOBALS['TL_DCA']['tl_calendar_events']['fields'][$field]['eval']['doNotCopy'] = false;
+    $GLOBALS['TL_DCA']['tl_calendar_events']['fields'][$field]['eval']['doNotCopy'] = false;
 }
