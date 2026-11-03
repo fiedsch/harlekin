@@ -1,15 +1,22 @@
 {% extends "@Contao/content_element/mannschaftsliste.html.twig" %}
+{% use "@Contao/component/_figure.html.twig" %}
 
 {% block content %}
 
   {% for verbandId, ligen in mannschaftsliste  %}
     {% if verbaende[verbandId].logo is not empty %}
-          {# TODO: geeignetes "include" für die <figure> nutzen #}
-          <h2><figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
-              <a href="{{ verbaende[verbandId].logo }}" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
-                  <img src="{{ verbaende[verbandId]['logo'] }}" class="img-thumbnail" width="150px" alt="{{ verbaende[verbandId].name }}" itemprop="image">
-              </a>
-          </figure></h2>
+          {% set logo_options = {
+              metadata: { alt: 'Logo '~verbaende[verbandId].name },
+              options: {
+                  img_attr: { class: 'img-thumbnail' }
+              }
+          } %}
+          {% set image = figure(verbaende[verbandId].logo, '_verband_logo', logo_options) %}
+          {% if image %}
+            <h2>{% with {figure: image} %}{{ block('figure_component') }}{% endwith %}</h2>
+              {% else %}
+             <h2 class="mt-5 mb-4">{{ verbaende[verbandId].name }}</h2>
+          {% endif %}
     {% else %}
        <h2 class="mt-5 mb-4">{{ verbaende[verbandId].name }}</h2>
     {% endif %}
