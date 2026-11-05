@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_calendar.spielplan.1">
         <source>spieplan_beschreibung</source>
-        <target>Dieser Kalender enthält einen Spielplan (es werde nur ausgewählte Felder angezeigt).</target>
+        <target>Dieser Kalender enthält einen Spielplan (es werden nur ausgewählte Felder angezeigt).</target>
       </trans-unit>
     </body>
   </file>
