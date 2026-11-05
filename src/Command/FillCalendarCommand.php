@@ -102,6 +102,13 @@ class FillCalendarCommand extends Command implements FrameworkAwareInterface
      *         ]
      *     ]
      * ]
+     *
+     * Wie bestimme ich diese IDs?
+     *  - <Kalender-ID> schau in Deinem Backend nach ;-)
+     *  - <Liga-ID> auf der Seite des Liga-Betreibers (der die Ligaverwaltung nutzt) URL des iCal imports auf der Liga-Seite
+     *  - <Mannschaft-ID> auf der Seite des Liga-Betreibers (der die Ligaverwaltung nutzt) URL des iCal imports auf der Mannschaftsseite
+     *  - oder beide IDs zusammen auf der Mannschaftsseite im HTML-Code (data-liga und data-mannschaft Attriubute)
+     *
      * TODO:
      *     - in externe *.yaml auslagern und deren Name als Parameter übergeben
      */
