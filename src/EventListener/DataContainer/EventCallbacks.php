@@ -92,6 +92,16 @@ SQL;
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['endTime']['eval']['tl_class']   = 'w25';
 
         $GLOBALS['TL_DCA']['tl_calendar_events']['fields']['title']['eval']['tl_class']   = 'long';
+
+        // suchen nur bei Bezeichnung des Spiels (steht in 'title')
+        foreach ($GLOBALS['TL_DCA']['tl_calendar_events']['fields'] as $field => $data) {
+            if (true ||isset($GLOBALS['TL_DCA']['tl_calendar_events']['fields'][$field]['search'])) {
+                $GLOBALS['TL_DCA']['tl_calendar_events']['fields'][$field]['search'] = false;
+            }
+        }
+        foreach (['title'] as $field) {
+            $GLOBALS['TL_DCA']['tl_calendar_events']['fields'][$field]['search'] = true;
+        }
     }
 
     public function handleFieldsLabels(DataContainer $dc): void
